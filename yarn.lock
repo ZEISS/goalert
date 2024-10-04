@@ -9520,10 +9520,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"diff@npm:5.2.0":
-  version: 5.2.0
-  resolution: "diff@npm:5.2.0"
-  checksum: 10/01b7b440f83a997350a988e9d2f558366c0f90f15be19f4aa7f1bb3109a4e153dfc3b9fbf78e14ea725717017407eeaa2271e3896374a0181e8f52445740846d
+"diff@npm:7.0.0":
+  version: 7.0.0
+  resolution: "diff@npm:7.0.0"
+  checksum: 10/e9b8e48d054c9c0c093c65ce8e2637af94b35f2427001607b14e5e0589e534ea3413a7f91ebe6d7c5a1494ace49cb7c7c3972f442ddd96a4767ff091999a082e
   languageName: node
   linkType: hard
 
@@ -10658,9 +10658,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:0.8.0":
-  version: 0.8.0
-  resolution: "eslint-plugin-storybook@npm:0.8.0"
+"eslint-plugin-storybook@npm:0.9.0":
+  version: 0.9.0
+  resolution: "eslint-plugin-storybook@npm:0.9.0"
   dependencies:
     "@storybook/csf": "npm:^0.0.1"
     "@typescript-eslint/utils": "npm:^5.62.0"
@@ -10668,7 +10668,7 @@ __metadata:
     ts-dedent: "npm:^2.2.0"
   peerDependencies:
     eslint: ">=6"
-  checksum: 10/a66e6737298af9bb830e3b14cdbd204e589a38adb810f02d843849936ef9175a80a49c8b8fa9263f8c2b9a8f36fdd3a2d429382d8051568c58d6272c65c2f5d3
+  checksum: 10/5207e016cca6e095ddce911acfa12e973092fdc1ec716dfb54be70b859ac9be7ebde9ba6baa04a0e2fc4e34c772c4e9261d36a78c2cd5a873eeebf6087073b9f
   languageName: node
   linkType: hard
 
@@ -18142,7 +18142,7 @@ __metadata:
     concurrently: "npm:9.0.1"
     cypress: "npm:13.14.2"
     detect-package-manager: "npm:3.0.2"
-    diff: "npm:5.2.0"
+    diff: "npm:7.0.0"
     esbuild: "npm:0.24.0"
     esbuild-jest: "npm:0.5.0"
     eslint: "npm:8.57.1"
@@ -18158,7 +18158,7 @@ __metadata:
     eslint-plugin-promise: "npm:7.1.0"
     eslint-plugin-react: "npm:7.36.1"
     eslint-plugin-react-hooks: "npm:4.6.2"
-    eslint-plugin-storybook: "npm:0.8.0"
+    eslint-plugin-storybook: "npm:0.9.0"
     fuse.js: "npm:7.0.0"
     glob: "npm:11.0.0"
     graphiql: "npm:3.7.1"
