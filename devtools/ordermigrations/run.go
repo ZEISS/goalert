@@ -30,25 +30,25 @@ func setTime(s string, t time.Time) string {
 func main() {
 	check := flag.Bool("check", false, "Exit with error status on wrong order, but don't actually rename anything.")
 	flag.Parse()
-	runCmd("git", "fetch", "--no-tags", "origin", "+refs/heads/master:")
-	masterMigrations := strings.Split(runCmd("git", "ls-tree", "-r", "--name-only", "origin/master", "--", "migrate/migrations"), "\n")
-	newMigrations := strings.Split(runCmd("git", "diff", "--name-only", "origin/master", "--", "migrate/migrations"), "\n")
+	runCmd("git", "fetch", "--no-tags", "origin", "+refs/heads/main:")
+	mainMigrations := strings.Split(runCmd("git", "ls-tree", "-r", "--name-only", "origin/main", "--", "migrate/migrations"), "\n")
+	newMigrations := strings.Split(runCmd("git", "diff", "--name-only", "origin/main", "--", "migrate/migrations"), "\n")
 
-	sort.Strings(masterMigrations)
+	sort.Strings(mainMigrations)
 	sort.Strings(newMigrations)
 
 	if len(newMigrations) == 0 || len(newMigrations) == 1 && newMigrations[0] == "" {
 		return
 	}
 
-	if newMigrations[0] > masterMigrations[len(masterMigrations)-1] {
+	if newMigrations[0] > mainMigrations[len(mainMigrations)-1] {
 		// already in order
 		return
 	}
 
 	if *check {
-		log.Println(newMigrations[0], "<=", masterMigrations[len(masterMigrations)-1])
-		log.Fatal("found new migrations before those in master")
+		log.Println(newMigrations[0], "<=", mainMigrations[len(mainMigrations)-1])
+		log.Fatal("found new migrations before those in main")
 	}
 
 	t := time.Now().Add(time.Minute)

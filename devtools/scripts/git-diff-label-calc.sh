@@ -5,7 +5,7 @@ set -e
 
 # env setting defaults
 if [ -z "$MAIN_BRANCH" ]; then
-    MAIN_BRANCH=master
+    MAIN_BRANCH=main
 fi
 if [ -z "$FAIL_IF_XL" ]; then
     FAIL_IF_XL=0

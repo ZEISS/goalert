@@ -7,7 +7,7 @@ GoAlert provides on-call scheduling, automated escalations and notifications (li
 ## Installation
 
 GoAlert is distributed as a single binary with release notes available from the [GitHub Releases](https://github.com/target/goalert/releases) page.
-Additionally, images are published on [Docker Hub](https://hub.docker.com/r/goalert/goalert) for each release. The `latest` tag is the most recent release, and `nightly` is the latest build from the `master` branch.
+Additionally, images are published on [Docker Hub](https://hub.docker.com/r/goalert/goalert) for each release. The `latest` tag is the most recent release, and `nightly` is the latest build from the `main` branch.
 
 See our [Getting Started Guide](./docs/getting-started.md) for running GoAlert in a production environment.
 

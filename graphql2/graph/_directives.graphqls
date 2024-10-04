@@ -1,5 +1,5 @@
 # Directive definitions are as per gqlgen documentation:
-# https://gqlgen.com/master/config#inline-config-with-directives
+# https://gqlgen.com/main/config#inline-config-with-directives
 
 # goField is used to tweak individual field configurations, rather than using gqlgen.yml
 directive @goField(

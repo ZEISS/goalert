@@ -7,7 +7,7 @@ set -e
 
 # env setting defaults
 if [ -z "$MAIN_BRANCH" ]; then
-    MAIN_BRANCH=master
+    MAIN_BRANCH=main
 fi
 
 # const settings
