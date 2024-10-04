@@ -11,6 +11,7 @@
 /cypress/
 
 *.pem
+!zscaler.pem
 *.key
 
 *.tgz
