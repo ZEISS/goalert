@@ -31,6 +31,7 @@ import (
 	"github.com/target/goalert/limit"
 	"github.com/target/goalert/notice"
 	"github.com/target/goalert/notification"
+	"github.com/target/goalert/notification/acs"
 	"github.com/target/goalert/notification/nfydest"
 	"github.com/target/goalert/notification/slack"
 	"github.com/target/goalert/notification/twilio"
@@ -90,6 +91,7 @@ type App struct {
 
 	NotificationStore *notification.Store
 	Twilio            *twilio.Config
+	ACS               *acs.Config
 
 	TimeZoneStore *timezone.Store
 

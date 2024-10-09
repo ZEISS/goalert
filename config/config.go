@@ -51,6 +51,15 @@ type Config struct {
 		DisableBasic bool     `public:"true" info:"Disallow username/password login."`
 	}
 
+	AzureCommunicationServices struct {
+		Enable bool `public:"true" info:"Enables sending and processing of Voice and SMS messages through the Azure Communication Services notification provider."`
+
+		Endpoint string `info:"The endpoint to use for sending messages."`
+		Key      string `password:"true" info:"The key used to sign requests to the Azure Communication Services endpoint."`
+
+		FromNumber string `public:"true" info:"The phone number to use for outgoing notifications."`
+	}
+
 	GitHub struct {
 		Enable bool `public:"true" info:"Enable GitHub authentication."`
 

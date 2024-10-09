@@ -31,6 +31,7 @@ import (
 	"github.com/target/goalert/limit"
 	"github.com/target/goalert/notice"
 	"github.com/target/goalert/notification"
+	"github.com/target/goalert/notification/acs"
 	"github.com/target/goalert/notification/nfydest"
 	"github.com/target/goalert/notification/slack"
 	"github.com/target/goalert/notification/twilio"
@@ -83,6 +84,9 @@ type App struct {
 	twilioSMS    *twilio.SMS
 	twilioVoice  *twilio.Voice
 	twilioConfig *twilio.Config
+
+	acsSMS    *acs.SMS
+	acsConfig *acs.Config
 
 	slackChan *slack.ChannelSender
 

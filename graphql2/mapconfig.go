@@ -42,6 +42,10 @@ func MapConfigValues(cfg config.Config) []ConfigValue {
 		{ID: "Maintenance.ScheduleCleanupDays", Type: ConfigTypeInteger, Description: "Schedule on-call history will be deleted after this many days (0 means disable cleanup).", Value: fmt.Sprintf("%d", cfg.Maintenance.ScheduleCleanupDays)},
 		{ID: "Auth.RefererURLs", Type: ConfigTypeStringList, Description: "Allowed referer URLs for auth and redirects.", Value: strings.Join(cfg.Auth.RefererURLs, "\n"), Deprecated: "Use --public-url flag instead, which takes precedence."},
 		{ID: "Auth.DisableBasic", Type: ConfigTypeBoolean, Description: "Disallow username/password login.", Value: fmt.Sprintf("%t", cfg.Auth.DisableBasic)},
+		{ID: "AzureCommunicationServices.Enable", Type: ConfigTypeBoolean, Description: "Enables sending and processing of Voice and SMS messages through the Azure Communication Services notification provider.", Value: fmt.Sprintf("%t", cfg.AzureCommunicationServices.Enable)},
+		{ID: "AzureCommunicationServices.Endpoint", Type: ConfigTypeString, Description: "The endpoint to use for sending messages.", Value: cfg.AzureCommunicationServices.Endpoint},
+		{ID: "AzureCommunicationServices.Key", Type: ConfigTypeString, Description: "The key used to sign requests to the Azure Communication Services endpoint.", Value: cfg.AzureCommunicationServices.Key, Password: true},
+		{ID: "AzureCommunicationServices.FromNumber", Type: ConfigTypeString, Description: "The phone number to use for outgoing notifications.", Value: cfg.AzureCommunicationServices.FromNumber},
 		{ID: "GitHub.Enable", Type: ConfigTypeBoolean, Description: "Enable GitHub authentication.", Value: fmt.Sprintf("%t", cfg.GitHub.Enable)},
 		{ID: "GitHub.NewUsers", Type: ConfigTypeBoolean, Description: "Allow new user creation via GitHub authentication.", Value: fmt.Sprintf("%t", cfg.GitHub.NewUsers)},
 		{ID: "GitHub.ClientID", Type: ConfigTypeString, Description: "", Value: cfg.GitHub.ClientID},
@@ -112,6 +116,8 @@ func MapPublicConfigValues(cfg config.Config) []ConfigValue {
 		{ID: "Maintenance.APIKeyExpireDays", Type: ConfigTypeInteger, Description: "Unused calendar API keys will be disabled after this many days (0 means disable cleanup).", Value: fmt.Sprintf("%d", cfg.Maintenance.APIKeyExpireDays)},
 		{ID: "Maintenance.ScheduleCleanupDays", Type: ConfigTypeInteger, Description: "Schedule on-call history will be deleted after this many days (0 means disable cleanup).", Value: fmt.Sprintf("%d", cfg.Maintenance.ScheduleCleanupDays)},
 		{ID: "Auth.DisableBasic", Type: ConfigTypeBoolean, Description: "Disallow username/password login.", Value: fmt.Sprintf("%t", cfg.Auth.DisableBasic)},
+		{ID: "AzureCommunicationServices.Enable", Type: ConfigTypeBoolean, Description: "Enables sending and processing of Voice and SMS messages through the Azure Communication Services notification provider.", Value: fmt.Sprintf("%t", cfg.AzureCommunicationServices.Enable)},
+		{ID: "AzureCommunicationServices.FromNumber", Type: ConfigTypeString, Description: "The phone number to use for outgoing notifications.", Value: cfg.AzureCommunicationServices.FromNumber},
 		{ID: "GitHub.Enable", Type: ConfigTypeBoolean, Description: "Enable GitHub authentication.", Value: fmt.Sprintf("%t", cfg.GitHub.Enable)},
 		{ID: "OIDC.Enable", Type: ConfigTypeBoolean, Description: "Enable OpenID Connect authentication.", Value: fmt.Sprintf("%t", cfg.OIDC.Enable)},
 		{ID: "Mailgun.Enable", Type: ConfigTypeBoolean, Description: "", Value: fmt.Sprintf("%t", cfg.Mailgun.Enable)},
@@ -232,6 +238,18 @@ func ApplyConfigValues(cfg config.Config, vals []ConfigValueInput) (config.Confi
 				return cfg, err
 			}
 			cfg.Auth.DisableBasic = val
+		case "AzureCommunicationServices.Enable":
+			val, err := parseBool(v.ID, v.Value)
+			if err != nil {
+				return cfg, err
+			}
+			cfg.AzureCommunicationServices.Enable = val
+		case "AzureCommunicationServices.Endpoint":
+			cfg.AzureCommunicationServices.Endpoint = v.Value
+		case "AzureCommunicationServices.Key":
+			cfg.AzureCommunicationServices.Key = v.Value
+		case "AzureCommunicationServices.FromNumber":
+			cfg.AzureCommunicationServices.FromNumber = v.Value
 		case "GitHub.Enable":
 			val, err := parseBool(v.ID, v.Value)
 			if err != nil {
